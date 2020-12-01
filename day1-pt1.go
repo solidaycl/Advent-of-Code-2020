@@ -5,33 +5,32 @@ import (
 	"fmt"
 	"log"
 	"os"
-    "strconv"
+	"strconv"
 )
- 
+
 func main() {
 	file, err := os.Open("day1.input")
- 
+
 	if err != nil {
 		log.Fatalf("failed opening file: %s", err)
 	}
- 
+
 	scanner := bufio.NewScanner(file)
 	scanner.Split(bufio.ScanLines)
 	var txtlines []int
- 
+
 	for scanner.Scan() {
-        i, _ := strconv.Atoi(scanner.Text())
+		i, _ := strconv.Atoi(scanner.Text())
 		txtlines = append(txtlines, i)
 	}
- 
+
 	file.Close()
- 
+
 	for _, i := range txtlines {
-        for _, j := range txtlines {
-            if(i + j == 2020) {
-                fmt.Println(i*j)
-            }
-        }
+		for _, j := range txtlines {
+			if i+j == 2020 {
+				fmt.Println(i * j)
+			}
+		}
 	}
 }
-
