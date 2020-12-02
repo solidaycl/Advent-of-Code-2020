@@ -33,10 +33,13 @@ func main() {
 		parts = strings.Split(parts[0], " ")
 		c := parts[1]
 		parts = strings.Split(parts[0], "-")
-		min, _ := strconv.Atoi(parts[0])
-		max, _ := strconv.Atoi(parts[1])
+		first, _ := strconv.Atoi(parts[0])
+		second, _ := strconv.Atoi(parts[1])
 
-		if strings.Count(password, c) >= min && strings.Count(password, c) <= max {
+		left := string(password[first-1]) == c
+		right := string(password[second-1]) == c
+
+		if (left || right) && (left != right) {
 			sum++
 		}
 	}
